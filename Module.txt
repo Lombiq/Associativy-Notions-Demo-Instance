@@ -1,0 +1,13 @@
+Name: Associativy Notions
+AntiForgery: enabled
+Author: Piedone
+Website: http://orchardproject.net
+Version: 1.0
+OrchardVersion: 1.3
+Description: Associativy Notions
+Features:
+	Associativy.Instances.Notions:
+		Name: Associativy Notions
+        Description: Associativy Notions database
+		Category: Associativy
+		Dependencies: Associativy.Frontends.Jit, Associativy.Administration
