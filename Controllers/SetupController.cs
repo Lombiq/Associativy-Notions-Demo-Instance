@@ -26,15 +26,17 @@ namespace Associativy.Instances.Notions.Controllers
             _orchardServices = orchardServices;
         }
 
-        public void Index()
+        public string Index()
         {
             var graphContext = new GraphContext { GraphName = "AssociativyNotions" };
             var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).ConnectionManager;
 
             new NotionGraphBuilder(_contentManager, graphContext, connectionManager).Build(true);
+
+            return "Done";
         }
 
-        public void Hungarian()
+        public string Hungarian()
         {
             var graphContext = new GraphContext { GraphName = "AssociativyHungarianNotions" };
             var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).ConnectionManager;
@@ -180,6 +182,8 @@ namespace Associativy.Instances.Notions.Controllers
             connectionManager.Connect(graphContext, nodes["víz"], nodes["gőz"]);
             connectionManager.Connect(graphContext, nodes["víz"], nodes["oxigén"]);
             connectionManager.Connect(graphContext, nodes["víz"], nodes["folyó"]);
+
+            return "Done";
         }
 
         private ContentItem NewNotion()
