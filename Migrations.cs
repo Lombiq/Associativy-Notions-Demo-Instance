@@ -1,10 +1,9 @@
 using Associativy.Extensions;
-using Associativy.Models;
+using Associativy.Instances.Notions.Models;
 using Orchard.ContentManagement.MetaData;
 using Orchard.Core.Contents.Extensions;
 using Orchard.Data.Migration;
 using Orchard.Environment.Extensions;
-using Associativy.Instances.Notions.Models;
 
 namespace Associativy.Instances.Notions.Migrations
 {
