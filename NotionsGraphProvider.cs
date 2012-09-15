@@ -1,10 +1,9 @@
-﻿using Associativy.GraphDiscovery;
+﻿using System;
+using Associativy.GraphDiscovery;
 using Associativy.Instances.Notions.Models;
 using Associativy.Services;
-using Orchard.Environment.Extensions;
-using Piedone.HelpfulLibraries.DependencyInjection;
 using Orchard.Environment;
-using System;
+using Orchard.Environment.Extensions;
 using Orchard.Localization;
 
 namespace Associativy.Instances.Notions
