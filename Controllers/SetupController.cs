@@ -26,7 +26,7 @@ namespace Associativy.Instances.Notions.Controllers
         public string Index()
         {
             var graphContext = new GraphContext { GraphName = "AssociativyNotions" };
-            var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).ConnectionManager;
+            var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).PathServices.ConnectionManager;
 
             new NotionGraphBuilder(_contentManager, graphContext, connectionManager).Build(true);
 
@@ -36,7 +36,7 @@ namespace Associativy.Instances.Notions.Controllers
         public string Hungarian()
         {
             var graphContext = new GraphContext { GraphName = "AssociativyHungarianNotions" };
-            var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).ConnectionManager;
+            var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).PathServices.ConnectionManager;
 
             var nodes = new Dictionary<string, IContent>();
 
