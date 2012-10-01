@@ -11,3 +11,8 @@ Features:
         Description: Associativy Notions database
 		Category: Associativy
 		Dependencies: Associativy.Frontends.Jit, Associativy.Administration
+	Associativy.Instances.Notions.Neo4j:
+		Name: Associativy Notions Neo4j
+        Description: Associativy Notions database stored in a Neo4j graph database
+		Category: Associativy
+		Dependencies: Associativy.Instances.Notions, Associativy.Neo4j

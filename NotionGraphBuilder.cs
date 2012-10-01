@@ -3,6 +3,8 @@ using Associativy.GraphDiscovery;
 using Associativy.Services;
 using Orchard.ContentManagement;
 using Orchard.Core.Title.Models;
+using Associativy.Models;
+using System.Linq;
 
 namespace Associativy.Instances.Notions
 {
@@ -15,7 +17,7 @@ namespace Associativy.Instances.Notions
         public Dictionary<string, IContent> Nodes { get; set; }
 
         public NotionGraphBuilder(
-            IContentManager contentManager, 
+            IContentManager contentManager,
             IGraphContext graphContext,
             IConnectionManager connectionManager)
         {
@@ -24,45 +26,81 @@ namespace Associativy.Instances.Notions
             _connectionManager = connectionManager;
         }
 
-        public void Build(bool setTitle)
+        public void Build(bool setTitle, bool justConnect)
         {
             Nodes = new Dictionary<string, IContent>();
 
-            Nodes["medicine"] = NewNotion();
-            Nodes["cyanide"] = NewNotion();
-            Nodes["cyan"] = NewNotion();
-            Nodes["red"] = NewNotion();
-            Nodes["green"] = NewNotion();
-            Nodes["blue"] = NewNotion();
-            Nodes["magenta"] = NewNotion();
-            Nodes["yellow"] = NewNotion();
-            Nodes["black"] = NewNotion();
-            Nodes["light"] = NewNotion();
-            Nodes["light speed"] = NewNotion();
-            Nodes["light year"] = NewNotion();
-            Nodes["colour"] = NewNotion();
-            Nodes["grass"] = NewNotion();
-            Nodes["plant"] = NewNotion();
-            Nodes["tree"] = NewNotion();
-            Nodes["flower"] = NewNotion();
-            Nodes["power plant"] = NewNotion();
-            Nodes["electricity"] = NewNotion();
-            Nodes["nuclear power plant"] = NewNotion();
-            Nodes["hydroelectric power plant"] = NewNotion();
-            Nodes["solar power"] = NewNotion();
-            Nodes["water"] = NewNotion();
-            Nodes["sun"] = NewNotion();
-            Nodes["USA"] = NewNotion();
-            Nodes["American"] = NewNotion();
-            Nodes["Ernest Hemingway"] = NewNotion();
-            Nodes["writer"] = NewNotion();
-            Nodes["Jókai Mór"] = NewNotion();
-            Nodes["Karl May"] = NewNotion();
-
-            foreach (var node in Nodes)
+            if (!justConnect)
             {
-                if (setTitle) node.Value.As<TitlePart>().Title = node.Key;
-                _contentManager.Create(node.Value);
+                Nodes["medicine"] = NewNotion();
+                Nodes["cyanide"] = NewNotion();
+                Nodes["cyan"] = NewNotion();
+                Nodes["red"] = NewNotion();
+                Nodes["green"] = NewNotion();
+                Nodes["blue"] = NewNotion();
+                Nodes["magenta"] = NewNotion();
+                Nodes["yellow"] = NewNotion();
+                Nodes["black"] = NewNotion();
+                Nodes["light"] = NewNotion();
+                Nodes["light speed"] = NewNotion();
+                Nodes["light year"] = NewNotion();
+                Nodes["colour"] = NewNotion();
+                Nodes["grass"] = NewNotion();
+                Nodes["plant"] = NewNotion();
+                Nodes["tree"] = NewNotion();
+                Nodes["flower"] = NewNotion();
+                Nodes["power plant"] = NewNotion();
+                Nodes["electricity"] = NewNotion();
+                Nodes["nuclear power plant"] = NewNotion();
+                Nodes["hydroelectric power plant"] = NewNotion();
+                Nodes["solar power"] = NewNotion();
+                Nodes["water"] = NewNotion();
+                Nodes["sun"] = NewNotion();
+                Nodes["USA"] = NewNotion();
+                Nodes["American"] = NewNotion();
+                Nodes["Ernest Hemingway"] = NewNotion();
+                Nodes["writer"] = NewNotion();
+                Nodes["Jókai Mór"] = NewNotion();
+                Nodes["Karl May"] = NewNotion();
+
+                foreach (var node in Nodes)
+                {
+                    if (setTitle) node.Value.As<TitlePart>().Title = node.Key;
+                    _contentManager.Create(node.Value);
+                } 
+            }
+            else
+            {
+                Nodes["medicine"] = FetchNode("medicine");
+                Nodes["cyanide"] = FetchNode("cyanide");
+                Nodes["cyan"] = FetchNode("cyan");
+                Nodes["red"] = FetchNode("red");
+                Nodes["green"] = FetchNode("green");
+                Nodes["blue"] = FetchNode("blue");
+                Nodes["magenta"] = FetchNode("magenta");
+                Nodes["yellow"] = FetchNode("yellow");
+                Nodes["black"] = FetchNode("black");
+                Nodes["light"] = FetchNode("light");
+                Nodes["light speed"] = FetchNode("light speed");
+                Nodes["light year"] = FetchNode("light year");
+                Nodes["colour"] = FetchNode("colour");
+                Nodes["grass"] = FetchNode("grass");
+                Nodes["plant"] = FetchNode("plant");
+                Nodes["tree"] = FetchNode("tree");
+                Nodes["flower"] = FetchNode("flower");
+                Nodes["power plant"] = FetchNode("power plant");
+                Nodes["electricity"] = FetchNode("electricity");
+                Nodes["nuclear power plant"] = FetchNode("nuclear power plant");
+                Nodes["hydroelectric power plant"] = FetchNode("hydroelectric power plant");
+                Nodes["solar power"] = FetchNode("solar power");
+                Nodes["water"] = FetchNode("water");
+                Nodes["sun"] = FetchNode("sun");
+                Nodes["USA"] = FetchNode("USA");
+                Nodes["American"] = FetchNode("American");
+                Nodes["Ernest Hemingway"] = FetchNode("Ernest Hemingway");
+                Nodes["writer"] = FetchNode("writer");
+                Nodes["Jókai Mór"] = FetchNode("Jókai Mór");
+                Nodes["Karl May"] = FetchNode("Karl May");
             }
 
             _connectionManager.Connect(_graphContext, Nodes["medicine"], Nodes["cyanide"]);
@@ -104,6 +142,13 @@ namespace Associativy.Instances.Notions
         private ContentItem NewNotion()
         {
             return _contentManager.New("Notion");
+        }
+
+        private ContentItem FetchNode(string label)
+        {
+            return _contentManager
+                        .Query<AssociativyNodeLabelPart, AssociativyNodeLabelPartRecord>()
+                        .Where(part => part.Label == label).List().First().ContentItem;
         }
     }
 }

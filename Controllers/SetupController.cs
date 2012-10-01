@@ -28,7 +28,7 @@ namespace Associativy.Instances.Notions.Controllers
             var graphContext = new GraphContext { GraphName = "AssociativyNotions" };
             var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).PathServices.ConnectionManager;
 
-            new NotionGraphBuilder(_contentManager, graphContext, connectionManager).Build(true);
+            new NotionGraphBuilder(_contentManager, graphContext, connectionManager).Build(true, false);
 
             return "Done";
         }
@@ -179,6 +179,16 @@ namespace Associativy.Instances.Notions.Controllers
             connectionManager.Connect(graphContext, nodes["víz"], nodes["gőz"]);
             connectionManager.Connect(graphContext, nodes["víz"], nodes["oxigén"]);
             connectionManager.Connect(graphContext, nodes["víz"], nodes["folyó"]);
+
+            return "Done";
+        }
+
+        public string Neo4j()
+        {
+            var graphContext = new GraphContext { GraphName = "Neo4jNotions" };
+            var connectionManager = _associativyServices.GraphManager.FindGraph(graphContext).PathServices.ConnectionManager;
+
+            new NotionGraphBuilder(_contentManager, graphContext, connectionManager).Build(true, true);
 
             return "Done";
         }

@@ -93,9 +93,17 @@
       <Project>{78ACE1AE-F7AE-4342-A83F-8FAB64514F52}</Project>
       <Name>Associativy.Frontends</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Associativy.Neo4j\Associativy.Neo4j.csproj">
+      <Project>{6E96E80E-8CE0-4970-8DB4-6B3DC85E38AD}</Project>
+      <Name>Associativy.Neo4j</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Associativy\Associativy.csproj">
       <Project>{A8EE4964-4880-4EE1-AC0A-75492D89BBE8}</Project>
       <Name>Associativy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Piedone.HelpfulLibraries\Piedone.HelpfulLibraries.csproj">
+      <Project>{EA61AD10-39D6-41A9-B12B-227F50C54158}</Project>
+      <Name>Piedone.HelpfulLibraries</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +111,7 @@
     <Compile Include="HungarianNotionsGraphProvider.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\HungarianNotionConnectorRecord.cs" />
+    <Compile Include="Neo4jNotionsGraphProvider.cs" />
     <Compile Include="NotionGraphBuilder.cs" />
     <Compile Include="NotionsGraphProvider.cs" />
     <Compile Include="Models\NotionToNotionConnectorRecord.cs" />
