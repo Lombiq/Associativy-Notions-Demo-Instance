@@ -17,7 +17,7 @@ namespace Associativy.Instances.Notions
 
         public NotionsGraphProvider(
             Work<ISqlConnectionManager<NotionToNotionConnectorRecord>> connectionManagerWork, 
-            Work<IPathFinder> pathFinderWork)
+            Work<IStandardPathFinder> pathFinderWork)
         {
             _pathServicesFactory = () => new PathServices(connectionManagerWork.Value, pathFinderWork.Value);
 

@@ -17,7 +17,7 @@ namespace Associativy.Instances.Notions
 
         public HungarianNotionsGraphProvider(
             Work<ISqlConnectionManager<HungarianNotionConnectorRecord>> connectionManagerWork,
-            Work<IPathFinder> pathFinderWork)
+            Work<IStandardPathFinder> pathFinderWork)
         {
             _pathServicesFactory = () => new PathServices(connectionManagerWork.Value, pathFinderWork.Value);
 
