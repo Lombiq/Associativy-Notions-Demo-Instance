@@ -15,6 +15,7 @@ namespace Associativy.Instances.Notions
 
         public Localizer T { get; set; }
 
+        // Notice the lazy-loading of path services
         public NotionsGraphProvider(
             Work<ISqlConnectionManager<NotionToNotionConnectorRecord>> connectionManagerWork, 
             Work<IStandardPathFinder> pathFinderWork)
