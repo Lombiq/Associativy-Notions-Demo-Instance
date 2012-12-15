@@ -2,8 +2,8 @@ Name: Associativy Notions
 AntiForgery: enabled
 Author: Piedone
 Website: http://orchardproject.net
-Version: 1.0
-OrchardVersion: 1.5.1
+Version: 1.1
+OrchardVersion: 1.6
 Description: Associativy Notions
 Features:
 	Associativy.Instances.Notions:
