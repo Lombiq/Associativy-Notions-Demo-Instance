@@ -5,9 +5,11 @@ using Associativy.Services;
 using Orchard;
 using Orchard.ContentManagement;
 using Orchard.Core.Title.Models;
+using Orchard.UI.Admin;
 
 namespace Associativy.Instances.Notions.Controllers
 {
+    [Admin]
     public class SetupController : Controller
     {
         private readonly IAssociativyServices _associativyServices;
