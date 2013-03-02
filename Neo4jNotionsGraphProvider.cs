@@ -18,6 +18,9 @@ namespace Associativy.Instances.Notions
 
         public Localizer T { get; set; }
 
+        public const string Name = "AssociativyWikipedia";
+
+
         public Neo4jNotionsGraphProvider(
             Work<INeo4jConnectionManager> connectionManagerWork,
             Work<INeo4jPathFinder> pathFinderWork,
@@ -32,6 +35,7 @@ namespace Associativy.Instances.Notions
 
             T = NullLocalizer.Instance;
         }
+
 
         public void Describe(DescribeContext describeContext)
         {

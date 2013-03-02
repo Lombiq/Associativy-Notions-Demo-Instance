@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Associativy.GraphDiscovery;
+using Associativy.Models;
 using Associativy.Services;
 using Orchard;
 using Orchard.ContentManagement;
@@ -100,7 +101,7 @@ namespace Associativy.Instances.Notions.Controllers
 
             foreach (var node in nodes)
             {
-                node.Value.As<TitlePart>().Title = node.Key;
+                node.Value.As<AssociativyNodeTitleLabelPart>().Label = node.Key;
                 _contentManager.Create(node.Value);
             }
 

@@ -15,6 +15,7 @@ namespace Associativy.Instances.Notions
 
         public Localizer T { get; set; }
 
+
         public HungarianNotionsGraphProvider(
             Work<ISqlConnectionManager<HungarianNotionConnectorRecord>> connectionManagerWork,
             Work<IStandardPathFinder> pathFinderWork)
@@ -23,6 +24,7 @@ namespace Associativy.Instances.Notions
 
             T = NullLocalizer.Instance;
         }
+
 
         public void Describe(DescribeContext describeContext)
         {

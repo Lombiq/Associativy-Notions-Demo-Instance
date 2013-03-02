@@ -16,6 +16,7 @@ namespace Associativy.Instances.Notions
 
         public Dictionary<string, IContent> Nodes { get; set; }
 
+
         public NotionGraphBuilder(
             IContentManager contentManager,
             IGraphContext graphContext,
@@ -25,6 +26,7 @@ namespace Associativy.Instances.Notions
             _graphContext = graphContext;
             _connectionManager = connectionManager;
         }
+
 
         public void Build(bool setTitle, bool justConnect)
         {
@@ -65,7 +67,7 @@ namespace Associativy.Instances.Notions
 
                 foreach (var node in Nodes)
                 {
-                    if (setTitle) node.Value.As<TitlePart>().Title = node.Key;
+                    if (setTitle) node.Value.As<AssociativyNodeTitleLabelPart>().Label = node.Key;
                     _contentManager.Create(node.Value);
                 } 
             }
