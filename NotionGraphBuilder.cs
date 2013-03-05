@@ -11,7 +11,7 @@ namespace Associativy.Instances.Notions
     public class NotionGraphBuilder
     {
         private readonly IContentManager _contentManager;
-        private readonly IGraphContext _graphContext;
+        private readonly IGraphDescriptor _graphDescriptor;
         private readonly IConnectionManager _connectionManager;
 
         public Dictionary<string, IContent> Nodes { get; set; }
@@ -19,12 +19,11 @@ namespace Associativy.Instances.Notions
 
         public NotionGraphBuilder(
             IContentManager contentManager,
-            IGraphContext graphContext,
-            IConnectionManager connectionManager)
+            IGraphDescriptor graphDescriptor)
         {
             _contentManager = contentManager;
-            _graphContext = graphContext;
-            _connectionManager = connectionManager;
+            _graphDescriptor = graphDescriptor;
+            _connectionManager = graphDescriptor.Services.ConnectionManager;
         }
 
 
@@ -105,40 +104,40 @@ namespace Associativy.Instances.Notions
                 Nodes["Karl May"] = FetchNode("Karl May");
             }
 
-            _connectionManager.Connect(_graphContext, Nodes["medicine"], Nodes["cyanide"]);
-            _connectionManager.Connect(_graphContext, Nodes["cyanide"], Nodes["cyan"]);
-            _connectionManager.Connect(_graphContext, Nodes["cyan"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["red"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["green"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["blue"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["magenta"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["yellow"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["black"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["light"], Nodes["colour"]);
-            _connectionManager.Connect(_graphContext, Nodes["light"], Nodes["light speed"]);
-            _connectionManager.Connect(_graphContext, Nodes["light"], Nodes["light year"]);
-            _connectionManager.Connect(_graphContext, Nodes["green"], Nodes["grass"]);
-            _connectionManager.Connect(_graphContext, Nodes["grass"], Nodes["plant"]);
-            _connectionManager.Connect(_graphContext, Nodes["plant"], Nodes["tree"]);
-            _connectionManager.Connect(_graphContext, Nodes["plant"], Nodes["flower"]);
-            _connectionManager.Connect(_graphContext, Nodes["plant"], Nodes["power plant"]);
-            _connectionManager.Connect(_graphContext, Nodes["electricity"], Nodes["power plant"]);
-            _connectionManager.Connect(_graphContext, Nodes["nuclear power plant"], Nodes["power plant"]);
-            _connectionManager.Connect(_graphContext, Nodes["hydroelectric power plant"], Nodes["power plant"]);
-            _connectionManager.Connect(_graphContext, Nodes["nuclear power plant"], Nodes["electricity"]);
-            _connectionManager.Connect(_graphContext, Nodes["hydroelectric power plant"], Nodes["electricity"]);
-            _connectionManager.Connect(_graphContext, Nodes["hydroelectric power plant"], Nodes["water"]);
-            _connectionManager.Connect(_graphContext, Nodes["solar power"], Nodes["electricity"]);
-            _connectionManager.Connect(_graphContext, Nodes["solar power"], Nodes["green"]);
-            _connectionManager.Connect(_graphContext, Nodes["water"], Nodes["blue"]);
-            _connectionManager.Connect(_graphContext, Nodes["sun"], Nodes["light"]);
-            _connectionManager.Connect(_graphContext, Nodes["sun"], Nodes["yellow"]);
-            _connectionManager.Connect(_graphContext, Nodes["sun"], Nodes["solar power"]);
-            _connectionManager.Connect(_graphContext, Nodes["USA"], Nodes["American"]);
-            _connectionManager.Connect(_graphContext, Nodes["American"], Nodes["Ernest Hemingway"]);
-            _connectionManager.Connect(_graphContext, Nodes["Ernest Hemingway"], Nodes["writer"]);
-            _connectionManager.Connect(_graphContext, Nodes["Jókai Mór"], Nodes["writer"]);
-            _connectionManager.Connect(_graphContext, Nodes["Karl May"], Nodes["writer"]);
+            _connectionManager.Connect(Nodes["medicine"], Nodes["cyanide"]);
+            _connectionManager.Connect(Nodes["cyanide"], Nodes["cyan"]);
+            _connectionManager.Connect(Nodes["cyan"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["red"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["green"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["blue"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["magenta"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["yellow"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["black"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["light"], Nodes["colour"]);
+            _connectionManager.Connect(Nodes["light"], Nodes["light speed"]);
+            _connectionManager.Connect(Nodes["light"], Nodes["light year"]);
+            _connectionManager.Connect(Nodes["green"], Nodes["grass"]);
+            _connectionManager.Connect(Nodes["grass"], Nodes["plant"]);
+            _connectionManager.Connect(Nodes["plant"], Nodes["tree"]);
+            _connectionManager.Connect(Nodes["plant"], Nodes["flower"]);
+            _connectionManager.Connect(Nodes["plant"], Nodes["power plant"]);
+            _connectionManager.Connect(Nodes["electricity"], Nodes["power plant"]);
+            _connectionManager.Connect(Nodes["nuclear power plant"], Nodes["power plant"]);
+            _connectionManager.Connect(Nodes["hydroelectric power plant"], Nodes["power plant"]);
+            _connectionManager.Connect(Nodes["nuclear power plant"], Nodes["electricity"]);
+            _connectionManager.Connect(Nodes["hydroelectric power plant"], Nodes["electricity"]);
+            _connectionManager.Connect(Nodes["hydroelectric power plant"], Nodes["water"]);
+            _connectionManager.Connect(Nodes["solar power"], Nodes["electricity"]);
+            _connectionManager.Connect(Nodes["solar power"], Nodes["green"]);
+            _connectionManager.Connect(Nodes["water"], Nodes["blue"]);
+            _connectionManager.Connect(Nodes["sun"], Nodes["light"]);
+            _connectionManager.Connect(Nodes["sun"], Nodes["yellow"]);
+            _connectionManager.Connect(Nodes["sun"], Nodes["solar power"]);
+            _connectionManager.Connect(Nodes["USA"], Nodes["American"]);
+            _connectionManager.Connect(Nodes["American"], Nodes["Ernest Hemingway"]);
+            _connectionManager.Connect(Nodes["Ernest Hemingway"], Nodes["writer"]);
+            _connectionManager.Connect(Nodes["Jókai Mór"], Nodes["writer"]);
+            _connectionManager.Connect(Nodes["Karl May"], Nodes["writer"]);
         }
 
         private ContentItem NewNotion()

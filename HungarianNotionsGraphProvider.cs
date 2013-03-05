@@ -11,16 +11,15 @@ namespace Associativy.Instances.Notions
     [OrchardFeature("Associativy.Instances.Notions")]
     public class HungarianNotionsGraphProvider : IGraphProvider
     {
-        private readonly Func<IPathServices> _pathServicesFactory;
+        private readonly IGraphServicesFactory _graphServicesFactory;
 
         public Localizer T { get; set; }
 
 
-        public HungarianNotionsGraphProvider(
-            Work<ISqlConnectionManager<HungarianNotionConnectorRecord>> connectionManagerWork,
-            Work<IStandardPathFinder> pathFinderWork)
+        // Notice the lazy-loading of path services
+        public HungarianNotionsGraphProvider(IGraphServicesFactory<IStandardMind, ISqlConnectionManager<HungarianNotionConnectorRecord>, IStandardPathFinder, IStandardNodeManager, IStandardGraphStatisticsService> graphServicesFactory)
         {
-            _pathServicesFactory = () => new PathServices(connectionManagerWork.Value, pathFinderWork.Value);
+            _graphServicesFactory = graphServicesFactory;
 
             T = NullLocalizer.Instance;
         }
@@ -32,7 +31,7 @@ namespace Associativy.Instances.Notions
                 "AssociativyHungarianNotions",
                 T("Associativy Hungarian Notions"),
                 new[] { "Notion" },
-                _pathServicesFactory);
+                _graphServicesFactory.Factory);
         }
     }
 }
