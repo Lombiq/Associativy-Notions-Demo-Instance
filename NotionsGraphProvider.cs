@@ -17,7 +17,7 @@ namespace Associativy.Instances.Notions
 
 
         // Notice the lazy-loading of path services
-        public NotionsGraphProvider(IGraphServicesFactory<IStandardMind, ISqlConnectionManager<NotionToNotionConnectorRecord>, IStandardPathFinder, IStandardNodeManager, IStandardGraphStatisticsService> graphServicesFactory)
+        public NotionsGraphProvider(IGraphServicesFactory<IStandardMind, ISqlConnectionManager<NotionToNotionConnectorRecord>, IStandardPathFinder, IStandardNodeManager, ISqlConnectionManager<NotionToNotionConnectorRecord>> graphServicesFactory)
         {
             _graphServicesFactory = graphServicesFactory;
 
