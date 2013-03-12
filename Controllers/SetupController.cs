@@ -5,7 +5,6 @@ using Associativy.Models;
 using Associativy.Services;
 using Orchard;
 using Orchard.ContentManagement;
-using Orchard.Core.Title.Models;
 using Orchard.UI.Admin;
 
 namespace Associativy.Instances.Notions.Controllers

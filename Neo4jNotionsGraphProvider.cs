@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Associativy.GraphDiscovery;
-using Associativy.Services;
-using Orchard.Localization;
 using Associativy.Neo4j.Services;
-using Orchard.Environment;
+using Associativy.Services;
 using Orchard.Environment.Extensions;
+using Orchard.Localization;
 
 namespace Associativy.Instances.Notions
 {

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Associativy.GraphDiscovery;
+using Associativy.Models;
 using Associativy.Services;
 using Orchard.ContentManagement;
-using Orchard.Core.Title.Models;
-using Associativy.Models;
-using System.Linq;
 
 namespace Associativy.Instances.Notions
 {

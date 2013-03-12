@@ -3,7 +3,6 @@ using Associativy.Instances.Notions.Models;
 using Orchard.ContentManagement.MetaData;
 using Orchard.Core.Contents.Extensions;
 using Orchard.Data.Migration;
-using Orchard.Environment.Extensions;
 
 namespace Associativy.Instances.Notions.Migrations
 {
