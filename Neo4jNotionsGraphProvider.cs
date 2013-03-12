@@ -25,8 +25,7 @@ namespace Associativy.Instances.Notions
             Func<IGraphDescriptor, IStandardMind> mindFactory,
             Func<IGraphDescriptor, Uri, INeo4jConnectionManager> connectionManagerFactory,
             Func<IGraphDescriptor, IStandardPathFinder> pathFinderFactory,
-            Func<IGraphDescriptor, IStandardNodeManager> nodeManagerFactory,
-            Func<IGraphDescriptor, INeo4jGraphStatisticsService> graphStatisticsServiceFactory)
+            Func<IGraphDescriptor, IStandardNodeManager> nodeManagerFactory)
         {
             _graphServicesFactory = (graphDescriptor) =>
             {
@@ -34,8 +33,7 @@ namespace Associativy.Instances.Notions
                     mindFactory(graphDescriptor),
                     connectionManagerFactory(graphDescriptor, new Uri("http://localhost:7474/db/data/")),
                     pathFinderFactory(graphDescriptor),
-                    nodeManagerFactory(graphDescriptor),
-                    graphStatisticsServiceFactory(graphDescriptor));
+                    nodeManagerFactory(graphDescriptor));
             };
 
             T = NullLocalizer.Instance;
