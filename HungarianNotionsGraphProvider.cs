@@ -8,7 +8,6 @@ using Orchard.Localization;
 
 namespace Associativy.Instances.Notions
 {
-    [OrchardFeature("Associativy.Instances.Notions")]
     public class HungarianNotionsGraphProvider : IGraphProvider
     {
         private readonly IGraphServicesFactory _graphServicesFactory;
