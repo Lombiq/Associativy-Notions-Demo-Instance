@@ -24,8 +24,8 @@ namespace Associativy.Instances.Notions
         public void Describe(DescribeContext describeContext)
         {
             describeContext.DescribeGraph(
-                "HungarianNotions",
-                T("Hungarian Notions"),
+                "AssociativyHungarianNotions",
+                T("Associativy Hungarian Notions"),
                 new[] { "Notion" },
                 _graphServicesFactory.Factory);
         }
