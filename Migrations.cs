@@ -16,7 +16,6 @@ namespace Associativy.Instances.Notions.Migrations
 
             ContentDefinitionManager.AlterTypeDefinition("Notion",
                 cfg => cfg
-                    .WithPart("CommonPart")
                     .WithTitleLabel()
                     .WithPart("AssociativyNodeManagementPart")
                     .Creatable()
