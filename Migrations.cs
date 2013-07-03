@@ -19,7 +19,7 @@ namespace Associativy.Instances.Notions.Migrations
                     .WithTitleLabel()
                     .WithPart("AssociativyNodeManagementPart")
                     .Creatable()
-            );
+                );
 
 
             return 1;
